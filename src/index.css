@@ -1,0 +1,523 @@
+:root {
+  font-family:
+    Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI",
+    sans-serif;
+  color: #203631;
+  background: #f3f0e8;
+  --canvas: #f3f0e8;
+  --surface: #fffdf8;
+  --surface-muted: #f8f6f0;
+  --surface-hover: #f0eee6;
+  --border: #e4dfd4;
+  --border-soft: #eee9df;
+  --ink: #203631;
+  --text: #3d514b;
+  --muted: #687871;
+  --accent: #0c7467;
+  --accent-hover: #095e55;
+  --accent-soft: #e2f0eb;
+  --rail: #183d37;
+  --rail-text: #e8f1eb;
+  --rail-muted: #a8c1b6;
+  --focus: #dc765a;
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+:focus-visible {
+  outline: 3px solid #3567d6;
+  outline-offset: 2px;
+}
+
+body {
+  min-width: 320px;
+  min-height: 100vh;
+  margin: 0;
+}
+
+button,
+a {
+  font: inherit;
+}
+
+#root {
+  min-height: 100vh;
+}
+
+.order-status {
+  border-radius: 20px;
+  display: inline-flex;
+  font-size: 9px;
+  font-weight: 600;
+  padding: 4px 8px;
+}
+
+.order-status-delivered {
+  background: #e9f7f1;
+  color: #146b49;
+}
+
+.order-status-processing {
+  background: #edf2ff;
+  color: #3567d6;
+}
+
+.order-status-shipped {
+  background: #f1edfb;
+  color: #7256bb;
+}
+
+.order-status-pending {
+  background: #fff5e6;
+  color: #805000;
+}
+
+.order-status-cancelled {
+  background: #fff0ef;
+  color: #a8322c;
+}
+
+html[data-theme="light"] body {
+  background: var(--canvas);
+  color: var(--ink);
+}
+
+html[data-theme="dark"] {
+  color-scheme: dark;
+  --canvas: #101a19;
+  --surface: #182522;
+  --surface-muted: #20312d;
+  --surface-hover: #253833;
+  --border: #30433d;
+  --border-soft: #273934;
+  --ink: #e8f0ea;
+  --text: #c9d6cf;
+  --muted: #9caea5;
+  --accent: #78cabb;
+  --accent-hover: #9bdccd;
+  --accent-soft: #1d3d37;
+  --rail: #0b1412;
+  --rail-text: #e8f1eb;
+  --rail-muted: #9fb6aa;
+  --focus: #f0a47c;
+}
+
+html[data-theme="dark"] body {
+  background: var(--canvas);
+  color: var(--ink);
+}
+
+html[data-theme] .dashboard-shell,
+html[data-theme] .dashboard-main {
+  background: var(--canvas);
+  color: var(--ink);
+}
+
+html[data-theme] .sidebar {
+  background: var(--rail);
+  border-color: #294841;
+  color: var(--rail-text);
+}
+
+html[data-theme] .brand-icon {
+  background: #df896c;
+  border-radius: 13px 13px 13px 4px;
+  color: #183d37;
+}
+
+html[data-theme] .brand-name {
+  color: var(--rail-text);
+  font-family: Georgia, "Times New Roman", serif;
+  font-size: 19px;
+  letter-spacing: -0.035em;
+}
+
+html[data-theme] .brand-caption,
+html[data-theme] .navigation-label {
+  color: var(--rail-muted);
+}
+
+html[data-theme] .navigation-link {
+  border-radius: 7px;
+  color: #c0d0c8;
+}
+
+html[data-theme] .navigation-link:hover {
+  background: rgb(255 255 255 / 8%);
+  color: #fffdf8;
+}
+
+html[data-theme] .navigation-link-active,
+html[data-theme] .navigation-link-active:hover {
+  background: rgb(255 255 255 / 13%);
+  box-shadow: inset 3px 0 #df896c;
+  color: #fffdf8;
+}
+
+html[data-theme] .sidebar-footer {
+  align-items: center;
+  border-top: 1px solid rgb(232 241 235 / 16%);
+  color: var(--rail-muted);
+  display: flex;
+  font-size: 10px;
+  gap: 8px;
+  letter-spacing: 0.06em;
+  margin-top: auto;
+  padding: 18px 8px 0;
+  text-transform: uppercase;
+}
+
+html[data-theme] .sidebar-footer strong {
+  color: #dfaa8f;
+  font-size: 9px;
+}
+
+html[data-theme] .sidebar-footer-mark {
+  background: #df896c;
+  border-radius: 50%;
+  height: 7px;
+  width: 7px;
+}
+
+html[data-theme] .dashboard-header {
+  background: var(--surface);
+  border-color: var(--border);
+  box-shadow: 0 1px 0 rgb(32 54 49 / 3%);
+}
+
+html[data-theme] .dashboard-header h1,
+html[data-theme] .overview-heading h2,
+html[data-theme] .overview-state h2,
+html[data-theme] .overview-panel-heading h2,
+html[data-theme] .orders-page-heading h2,
+html[data-theme] .analytics-page-heading h2,
+html[data-theme] .analytics-summary-heading h2,
+html[data-theme] .inventory-page-heading h2,
+html[data-theme] .inventory-section-heading h2,
+html[data-theme] .order-details-heading h2,
+html[data-theme] .resolve-dialog h2 {
+  color: var(--ink);
+  font-family: Georgia, "Times New Roman", serif;
+  font-weight: 600;
+  letter-spacing: -0.025em;
+}
+
+html[data-theme] .dashboard-header h1 {
+  font-size: 21px;
+}
+
+html[data-theme] .header-actions {
+  gap: 12px;
+}
+
+html[data-theme] .theme-toggle-button {
+  align-items: center;
+  background: var(--surface-muted);
+  border: 1px solid var(--border);
+  border-radius: 999px;
+  color: var(--text);
+  cursor: pointer;
+  display: inline-flex;
+  font-size: 11px;
+  font-weight: 650;
+  gap: 7px;
+  height: 36px;
+  padding: 0 12px;
+  transition:
+    background-color 140ms ease,
+    border-color 140ms ease,
+    color 140ms ease;
+}
+
+html[data-theme] .theme-toggle-button:hover {
+  background: var(--accent-soft);
+  border-color: var(--accent);
+  color: var(--accent);
+}
+
+html[data-theme] .theme-toggle-button:focus-visible,
+html[data-theme] .navigation-link:focus-visible,
+html[data-theme] .icon-button:focus-visible,
+html[data-theme] button:focus-visible,
+html[data-theme] a:focus-visible {
+  outline: 3px solid var(--focus);
+  outline-offset: 3px;
+}
+
+html[data-theme] .icon-button {
+  color: var(--muted);
+}
+
+html[data-theme] .profile-area {
+  border-color: var(--border);
+}
+
+html[data-theme] .profile-name {
+  color: var(--text);
+}
+
+html[data-theme] .profile-avatar {
+  background: var(--accent-soft);
+  color: var(--accent);
+}
+
+html[data-theme] .dashboard-content {
+  padding-top: 38px;
+}
+
+html[data-theme] .kpi-card,
+html[data-theme] .overview-panel,
+html[data-theme] .overview-state,
+html[data-theme] .orders-filter-panel,
+html[data-theme] .orders-table-card,
+html[data-theme] .order-details-panel,
+html[data-theme] .analytics-filter-panel,
+html[data-theme] .analytics-summary-card,
+html[data-theme] .analytics-error-state,
+html[data-theme] .inventory-panel,
+html[data-theme] .resolve-dialog,
+html[data-theme] .inventory-feedback,
+html[data-theme] .analytics-summary-skeleton,
+html[data-theme] .analytics-chart-skeleton,
+html[data-theme] .widget-skeleton {
+  background: var(--surface);
+  border-color: var(--border);
+  box-shadow: 0 8px 24px rgb(29 48 43 / 4%);
+}
+
+html[data-theme] .kpi-card,
+html[data-theme] .analytics-summary-card {
+  border-radius: 8px 16px 16px;
+}
+
+html[data-theme] .kpi-card:first-child {
+  border-top: 3px solid #df896c;
+}
+
+html[data-theme] .kpi-card:nth-child(2) {
+  border-top: 3px solid var(--accent);
+}
+
+html[data-theme] .kpi-card:nth-child(3) {
+  border-top: 3px solid #d5a649;
+}
+
+html[data-theme] .kpi-card:nth-child(4) {
+  border-top: 3px solid #648a71;
+}
+
+html[data-theme] .kpi-card-title,
+html[data-theme] .kpi-card-value,
+html[data-theme] .overview-panel-heading h2,
+html[data-theme] .orders-page-heading h2,
+html[data-theme] .analytics-page-heading h2,
+html[data-theme] .analytics-summary-value,
+html[data-theme] .inventory-product-name,
+html[data-theme] .order-details-heading h2 {
+  color: var(--ink);
+}
+
+html[data-theme] .overview-heading p,
+html[data-theme] .overview-state p,
+html[data-theme] .overview-panel-heading p,
+html[data-theme] .orders-page-heading p,
+html[data-theme] .analytics-page-heading p,
+html[data-theme] .analytics-period-note,
+html[data-theme] .analytics-summary-heading p,
+html[data-theme] .analytics-summary-card h3,
+html[data-theme] .analytics-summary-detail,
+html[data-theme] .inventory-page-heading p,
+html[data-theme] .inventory-section-heading p,
+html[data-theme] .inventory-currency-note,
+html[data-theme] .order-details-panel,
+html[data-theme] .order-detail-meta dt,
+html[data-theme] .order-totals dt,
+html[data-theme] .page-placeholder {
+  color: var(--muted);
+}
+
+html[data-theme] .kpi-card-icon {
+  background: var(--accent-soft);
+  color: var(--accent);
+}
+
+html[data-theme] .analytics-filter-panel,
+html[data-theme] .orders-filter-panel {
+  border-radius: 8px 16px 16px;
+}
+
+html[data-theme] .analytics-date-fieldset input,
+html[data-theme] .orders-input-wrap,
+html[data-theme] .orders-status-field select,
+html[data-theme] .orders-date-fieldset input,
+html[data-theme] .inventory-search,
+html[data-theme] .inventory-stock-filter select,
+html[data-theme] input,
+html[data-theme] select {
+  background-color: var(--surface-muted);
+  border-color: var(--border);
+  color: var(--text);
+}
+
+html[data-theme] input::placeholder {
+  color: var(--muted);
+  opacity: 1;
+}
+
+html[data-theme] .orders-clear-button,
+html[data-theme] .analytics-clear-button {
+  background: var(--surface);
+  border-color: var(--border);
+  color: var(--text);
+}
+
+html[data-theme] .orders-apply-button,
+html[data-theme] .analytics-apply-button,
+html[data-theme] .resolve-confirm-button,
+html[data-theme] .analytics-error-state button {
+  background: var(--accent);
+  border-color: var(--accent);
+}
+
+html[data-theme] .orders-apply-button:hover,
+html[data-theme] .analytics-apply-button:hover,
+html[data-theme] .resolve-confirm-button:hover,
+html[data-theme] .analytics-error-state button:hover {
+  background: var(--accent-hover);
+}
+
+html[data-theme] .order-sort-button,
+html[data-theme] .orders-customer-name,
+html[data-theme] .order-id-button {
+  color: var(--text);
+}
+
+html[data-theme] .orders-table-scroll,
+html[data-theme] .inventory-table-scroll,
+html[data-theme] .table-scroll {
+  border-color: var(--border);
+}
+
+html[data-theme] .orders-data-table th,
+html[data-theme] .inventory-table th {
+  background: var(--surface-muted);
+  border-color: var(--border);
+  color: var(--muted);
+}
+
+html[data-theme] .orders-data-table td,
+html[data-theme] .inventory-table td,
+html[data-theme] .recent-orders-table td {
+  border-color: var(--border-soft);
+  color: var(--text);
+}
+
+html[data-theme] .orders-data-table tr:hover,
+html[data-theme] .inventory-table tbody tr:hover,
+html[data-theme] .recent-orders-table tbody tr:hover {
+  background: var(--surface-hover);
+}
+
+html[data-theme] .order-row-selected {
+  background: var(--accent-soft);
+}
+
+html[data-theme] .chart-tooltip {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  color: var(--ink);
+}
+
+html[data-theme] .chart-tooltip p,
+html[data-theme] .chart-tooltip-row,
+html[data-theme] .chart-legend-label {
+  color: var(--text);
+}
+
+html[data-theme] .order-status-delivered,
+html[data-theme] .stock-status-in-stock,
+html[data-theme] .inventory-alert-resolved .inventory-alert-icon {
+  background: #dcefe5;
+  color: #176044;
+}
+
+html[data-theme] .order-status-processing,
+html[data-theme] .stock-status-low-stock,
+html[data-theme] .severity-medium {
+  background: #f3e8cb;
+  color: #714d09;
+}
+
+html[data-theme] .order-status-shipped,
+html[data-theme] .severity-low {
+  background: #e5e3f2;
+  color: #51447e;
+}
+
+html[data-theme] .order-status-pending,
+html[data-theme] .order-status-cancelled,
+html[data-theme] .stock-status-out-of-stock,
+html[data-theme] .severity-high,
+html[data-theme] .severity-critical {
+  background: #f4e1dc;
+  color: #823d32;
+}
+
+html[data-theme="dark"] .order-status-delivered,
+html[data-theme="dark"] .stock-status-in-stock,
+html[data-theme="dark"] .inventory-alert-resolved .inventory-alert-icon {
+  background: #1d4437;
+  color: #a9dec1;
+}
+
+html[data-theme="dark"] .order-status-processing,
+html[data-theme="dark"] .stock-status-low-stock,
+html[data-theme="dark"] .severity-medium {
+  background: #493c21;
+  color: #f0d48f;
+}
+
+html[data-theme="dark"] .order-status-shipped,
+html[data-theme="dark"] .severity-low {
+  background: #39344f;
+  color: #c6b8f1;
+}
+
+html[data-theme="dark"] .order-status-pending,
+html[data-theme="dark"] .order-status-cancelled,
+html[data-theme="dark"] .stock-status-out-of-stock,
+html[data-theme="dark"] .severity-high,
+html[data-theme="dark"] .severity-critical {
+  background: #4b302d;
+  color: #f0b5a8;
+}
+
+html[data-theme="dark"] .inventory-table tbody tr:hover,
+html[data-theme="dark"] .orders-data-table tr:hover,
+html[data-theme="dark"] .recent-orders-table tbody tr:hover {
+  background: var(--surface-hover);
+}
+
+@media (max-width: 640px) {
+  html[data-theme] .header-actions {
+    gap: 5px;
+  }
+
+  html[data-theme] .theme-toggle-button {
+    border-radius: 50%;
+    height: 36px;
+    justify-content: center;
+    padding: 0;
+    width: 36px;
+  }
+
+  html[data-theme] .theme-toggle-button span {
+    display: none;
+  }
+}
