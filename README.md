@@ -2,6 +2,10 @@
 
 A responsive, client-side operations dashboard built with React, JSX, and Vite. It brings order activity, sales performance, inventory levels, and operational alerts into one interface. The application currently uses linked mock data and an asynchronous mock service layer; it does not connect to a production API or database.
 
+## Live application
+
+- [https://fieldnote-rho-hazel.vercel.app/overview](https://fieldnote-rho-hazel.vercel.app/overview)
+
 ## Project overview
 
 The dashboard is intended to give an e-commerce operations team a single place to review store activity and spot work that needs attention. It presents order and revenue KPIs, trends, searchable and filterable order records, product stock levels, and delayed-order or stock alerts.
