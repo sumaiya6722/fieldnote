@@ -4,7 +4,7 @@ A responsive, client-side operations dashboard built with React, JSX, and Vite. 
 
 ## Live application
 
--[Live Application](https://fieldnote-rho-hazel.vercel.app/overview)
+- [Live Application](https://fieldnote-rho-hazel.vercel.app/)
 
 ## Project overview
 
